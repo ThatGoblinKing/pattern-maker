@@ -24,6 +24,9 @@ class Shape():
     def getScale(self):
         return self.radius
 
+    def updateColor(self, newColor):
+        self.color = newColor
+
 class Circle(Shape):
     def __init__(self, radius: int, color: tuple[int, int, int], pos: tuple[int, int]):
         super().__init__(radius, color, pos)
@@ -32,7 +35,7 @@ class Circle(Shape):
     def draw(self, canvas):
         pygame.draw.circle(canvas, self.color, self.pos, self.radius)
 
-class nGon(Shape):
+class NGon(Shape):
     def __init__(self, sides: int, radius: int, color: tuple[int, int, int], pos: tuple[int, int]):
         super().__init__(radius, color, pos)
         self.sides = sides
@@ -64,7 +67,7 @@ class nGon(Shape):
         self.radius += radius if self.radius + radius > 0  else 0
 
 
-class Star(nGon):
+class Star(NGon):
     def __init__(self, sides: int, pointCenterRatio: float, radius: int, color: tuple[int, int, int], pos: tuple[int, int]):
         super().__init__(sides, radius, color, pos)
         self.sides = sides
